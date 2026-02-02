@@ -9,7 +9,7 @@ function App() {
       <div
         className="fixed inset-0 w-full h-full bg-cover bg-center -z-10"
         style={{
-          backgroundImage: 'url(/img.png)',
+          backgroundImage: 'url(/test.jpg)',
           filter: 'blur(5px)',
           WebkitFilter: 'blur(5px)', // For Safari
         }}
