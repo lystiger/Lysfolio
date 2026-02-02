@@ -31,7 +31,7 @@ const FlipCard: React.FC = () => {
       setPopupImg('/38thclick.png');
       playGlitch();
     } else if (clicks === 52) {
-      setPopupImg('/52ndclick.png');
+      setPopupImg('/52ndclick.jpeg');
       playGlitch();
     }
   }, [clicks, playGlitch]);
@@ -127,24 +127,26 @@ const FlipCard: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md"
+            onClick={() => setPopupImg(null)}
           >
             <motion.div
               initial={{ scale: 0.5, rotate: -10 }}
               animate={{ scale: 1, rotate: 0 }}
               exit={{ scale: 0.5, opacity: 0 }}
-              className="relative max-w-lg w-full p-4"
+              className="relative max-w-sm w-full p-4"
+              onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setPopupImg(null)}
-                className="absolute -top-10 right-0 text-white hover:text-red-500 transition-colors"
-              >
-                <XCircle size={32} />
-              </button>
               <img
                 src={popupImg}
                 alt="Secret Unlocked"
                 className="rounded-xl border-2 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.2)]"
               />
+              <button
+                onClick={() => setPopupImg(null)}
+                className="absolute top-2 right-2 text-white hover:text-red-500 transition-colors bg-black/50 rounded-full p-1"
+              >
+                <XCircle size={24} />
+              </button>
               <p className="text-center text-white font-mono mt-4 animate-pulse">
                 CRITICAL_ERROR: UNKNOWN_FILE_ACCESSED
               </p>

@@ -20,7 +20,11 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
   useEffect(() => {
     // Haptic Feedback
     if ('vibrate' in navigator) {
-      navigator.vibrate([40, 20, 20]); // Vibrate pattern
+      try {
+        navigator.vibrate([40, 20, 20]); // Vibrate pattern
+      } catch (error) {
+        // Silently handle vibration blocking
+      }
     }
   }, [index]); // Trigger vibration on index change
 
