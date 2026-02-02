@@ -40,28 +40,6 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        type: 'spring',
-        stiffness: 400,
-        damping: 20,
-        mass: 1,
-        velocity: 0,
-        restDelta: 0.001,
-        restSpeed: 0.001,
-        scale: {
-          type: 'spring',
-          stiffness: 400,
-          damping: 20,
-          mass: 1,
-          velocity: 0,
-          restDelta: 0.001,
-          restSpeed: 0.001,
-          duration: 0.2,
-          ease: 'easeOut',
-          from: 0.8,
-          to: 1.05,
-        },
-      },
     },
     exit: {
       opacity: 0,
@@ -69,7 +47,7 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
       filter: 'blur(4px)',
       transition: {
         duration: 0.3,
-        ease: 'easeIn',
+        ease: 'easeIn' as any,
       },
     },
   };
@@ -83,6 +61,15 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
           initial="enter"
           animate="center"
           exit="exit"
+          transition={{
+            type: 'spring',
+            stiffness: 400,
+            damping: 20,
+            mass: 1,
+            velocity: 0,
+            restDelta: 0.001,
+            restSpeed: 0.001,
+          }}
           className="absolute whitespace-nowrap text-center w-full"
           style={{ color: currentPhrase.color }}
         >

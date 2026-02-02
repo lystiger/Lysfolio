@@ -29,10 +29,6 @@ const HomePage: React.FC = () => {
     visible: {
       opacity: 1,
       backgroundPosition: '100% 50%',
-      transition: {
-        duration: 1.5,
-        ease: 'easeInOut',
-      },
     },
   };
 
@@ -67,6 +63,10 @@ const HomePage: React.FC = () => {
           Building the{' '}
           <motion.span
             variants={futureVariants}
+            transition={{
+              duration: 1.5,
+              ease: [0.42, 0, 0.58, 1],
+            }}
             className="inline-block bg-gradient-to-r from-indigo-neon to-purple-500 text-transparent bg-clip-text"
           >
             Future
@@ -236,7 +236,7 @@ const HomePage: React.FC = () => {
           <a href="https://github.com/lystiger" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-neon transition-colors duration-300 text-3xl">
             <Github size={32} />
           </a>
-          <a href="https://linkedin.com/in/lystiger" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-neon transition-colors duration-300 text-3xl">
+          <a href="https://linkedin.com/in/anh-do-hung-1a801331a/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-neon transition-colors duration-300 text-3xl">
             <Linkedin size={32} />
           </a>
           <a href="mailto:Dohunganh5002@gmail.com" className="text-white hover:text-indigo-neon transition-colors duration-300 text-3xl">
