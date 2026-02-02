@@ -71,7 +71,7 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
   };
 
   return (
-    <div className="relative inline-block h-8 overflow-hidden font-mono"> {/* Adjust height as needed */}
+    <div className="relative inline-block h-10 overflow-hidden font-mono text-2xl font-bold w-[320px]"> {/* Fixed width for stable layout */}
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
@@ -79,7 +79,7 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
           initial="enter"
           animate="center"
           exit="exit"
-          className="absolute whitespace-nowrap"
+          className="absolute whitespace-nowrap text-center w-full"
           style={{ color: currentPhrase.color }}
         >
           {currentPhrase.text}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowUp } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion'; // Import Framer Motion
+import HapticText from '../components/HapticText';
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -13,6 +14,14 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const height = useTransform(scrollY, [0, 100], [80, 60]); // Shrink from 80px to 60px
   const blurValue = useTransform(scrollY, [0, 100], [0, 10]); // Increase blur from 0 to 10px
   const backdropFilter = useTransform(blurValue, (latest) => `blur(${latest}px)`);
+
+  const phrases = [
+    { text: 'Hello, I am Lystiger', color: '#3b82f6' }, // Blue for English
+    { text: 'こんにちは、Lystigerです', color: '#ef4444' }, // Red for Japanese
+    { text: 'Bonjour, je suis Lystiger', color: '#ffffff' }, // White for French
+    { text: 'Hola, soy Lystiger', color: '#10b981' }, // Green for Spanish
+    { text: 'Hallo, ich bin Lystiger', color: '#f59e0b' }, // Yellow for German
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +52,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         className="bg-obsidian/80 text-white p-4 shadow-lg sticky top-0 z-50 overflow-hidden"
       >
         <nav className="container mx-auto flex justify-between items-center h-full">
-          <h1 className="text-2xl font-bold text-indigo-neon">Hello, I am Lystiger</h1>
+          <HapticText phrases={phrases} interval={3000} />
           <ul className="flex space-x-4">
             <li><a href="#hero" className="hover:text-indigo-neon transition-colors duration-300">Home</a></li>
             <li><a href="#about" className="hover:text-indigo-neon transition-colors duration-300">About</a></li>
