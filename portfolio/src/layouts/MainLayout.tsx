@@ -43,7 +43,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         className="bg-obsidian/80 text-white p-4 shadow-lg sticky top-0 z-50 overflow-hidden"
       >
         <nav className="container mx-auto flex justify-between items-center h-full">
-          <h1 className="text-2xl font-bold text-indigo-neon">My Portfolio</h1>
+          <h1 className="text-2xl font-bold text-indigo-neon">Lystiger Takes On The World</h1>
           <ul className="flex space-x-4">
             <li><a href="#hero" className="hover:text-indigo-neon transition-colors duration-300">Home</a></li>
             <li><a href="#about" className="hover:text-indigo-neon transition-colors duration-300">About</a></li>
@@ -65,7 +65,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         </button>
       )}
       <footer className="bg-obsidian text-white p-4 text-center">
-        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
+        <p>&copy; 2026 Lystiger. All rights reserved.</p>
       </footer>
     </div>
   );

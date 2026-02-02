@@ -223,7 +223,7 @@ const HomePage: React.FC = () => {
           </form>
         </div>
         <div className="flex justify-center space-x-6 mt-8">
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-neon transition-colors duration-300 text-3xl">
+          <a href="https://github.com/lystiger" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-neon transition-colors duration-300 text-3xl">
             <Github size={32} />
           </a>
           <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-white hover:text-indigo-neon transition-colors duration-300 text-3xl">
