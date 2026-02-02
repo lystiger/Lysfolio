@@ -5,7 +5,7 @@ const FlipCard: React.FC = () => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <div className="perspective-1000 w-80 h-48 mx-auto">
+    <div className="w-[35%] h-64 mx-auto" style={{ perspective: '1000px' }}>
       <motion.div
         className="relative w-full h-full cursor-pointer"
         style={{ transformStyle: 'preserve-3d' }}
@@ -21,30 +21,30 @@ const FlipCard: React.FC = () => {
       >
         {/* Front Side */}
         <motion.div
-          className="absolute inset-0 w-full h-full backface-hidden rounded-lg bg-gradient-to-br from-indigo-neon to-purple-500 p-6 flex flex-col justify-center items-center text-white shadow-lg"
+          className="absolute inset-0 w-full h-full backface-hidden rounded-lg bg-slate-900/40 backdrop-blur-xl border border-white/10 text-white shadow-2xl p-6 flex flex-col justify-center items-center"
           style={{ backfaceVisibility: 'hidden' }}
         >
-          <h3 className="text-2xl font-bold mb-2">Quick Facts</h3>
-          <div className="text-center space-y-1">
-            <p><strong>Name:</strong> Lystiger</p>
+          <h3 className="text-2xl font-bold mb-4">Quick Facts</h3>
+          <div className="text-center space-y-2">
+            <p><strong>Name:</strong> Hung Anh Do</p>
             <p><strong>Age:</strong> 21</p>
-            <p><strong>Phone:</strong> +1 (123) 456-7890</p>
-            <p><strong>Address:</strong> Ho Chi Minh City, Vietnam</p>
+            <p><strong>Phone:</strong> +98 (925)58 619</p>
+            <p><strong>Address:</strong> Ha Noi City, Vietnam</p>
             <p><strong>Nationality:</strong> Vietnamese</p>
           </div>
         </motion.div>
 
         {/* Back Side */}
         <motion.div
-          className="absolute inset-0 w-full h-full backface-hidden rounded-lg bg-obsidian p-6 flex flex-col justify-center items-center text-white shadow-lg"
+          className="absolute inset-0 w-full h-full backface-hidden rounded-lg bg-bg-white/5 backdrop-blur-2xl text-white shadow-2xl p-6 flex flex-col justify-center items-center"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',
           }}
         >
-          <h3 className="text-2xl font-bold mb-2">Personal Side</h3>
-          <div className="text-center space-y-1">
-            <p><strong>Relation Status:</strong> Single</p>
+          <h3 className="text-2xl font-bold mb-4">Personal Side</h3>
+          <div className="text-center space-y-2">
+            <p><strong>Relation Status:</strong> In luv</p>
             <p><strong>Hobbies:</strong> Coding, AI Research, Gaming</p>
           </div>
         </motion.div>

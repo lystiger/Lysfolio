@@ -3,6 +3,7 @@ import { Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
+import FlipCard from '../components/FlipCard';
 
 const HomePage: React.FC = () => {
   // Framer Motion variants for section entrance orchestration
@@ -82,6 +83,9 @@ const HomePage: React.FC = () => {
         >
           View My Work
         </motion.a>
+        <motion.div variants={itemVariants} className="mt-12 flex justify-center">
+          <FlipCard />
+        </motion.div>
       </motion.section>
 
       {/* About Me Section */}
