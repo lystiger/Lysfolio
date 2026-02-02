@@ -1,32 +1,71 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { ArrowUp } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion'; // Import Framer Motion
 
 interface MainLayoutProps {
   children: React.ReactNode;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  const { scrollY } = useScroll();
+  const height = useTransform(scrollY, [0, 100], [80, 60]); // Shrink from 80px to 60px
+  const blurValue = useTransform(scrollY, [0, 100], [0, 10]); // Increase blur from 0 to 10px
+  const backdropFilter = useTransform(blurValue, (latest) => `blur(${latest}px)`);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
-    <div className="bg-slate-950 text-slate-200 min-h-screen flex flex-col">
-      <header className="p-4 border-b border-slate-800">
-        <div className="container mx-auto max-w-5xl">
-          <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-indigo-500">Lystiger</h1>
-            <nav>
-              <a href="#" className="text-slate-200 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-              <a href="#" className="text-slate-200 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-              <a href="#" className="text-slate-200 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium">About</a>
-              <a href="#" className="text-slate-200 hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-            </nav>
-          </div>
-        </div>
-      </header>
-      <main className="container mx-auto max-w-5xl p-8 flex-grow">
+    <div className="min-h-screen flex flex-col">
+      <motion.header
+        style={{ height, backdropFilter }}
+        className="bg-obsidian/80 text-white p-4 shadow-lg sticky top-0 z-50 overflow-hidden"
+      >
+        <nav className="container mx-auto flex justify-between items-center h-full">
+          <h1 className="text-2xl font-bold text-indigo-neon">My Portfolio</h1>
+          <ul className="flex space-x-4">
+            <li><a href="#hero" className="hover:text-indigo-neon transition-colors duration-300">Home</a></li>
+            <li><a href="#about" className="hover:text-indigo-neon transition-colors duration-300">About</a></li>
+            <li><a href="#projects" className="hover:text-indigo-neon transition-colors duration-300">Projects</a></li>
+            <li><a href="#contact" className="hover:text-indigo-neon transition-colors duration-300">Contact</a></li>
+          </ul>
+        </nav>
+      </motion.header>
+      <main className="flex-grow container mx-auto p-4">
         {children}
       </main>
-      <footer className="p-8 border-t border-slate-800 mt-auto">
-        <div className="container mx-auto max-w-5xl text-center text-slate-400">
-          <p>&copy; 2026 Lystiger. All rights reserved.</p>
-        </div>
+      {showBackToTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 bg-indigo-neon text-white p-3 rounded-full shadow-lg hover:bg-indigo-600 transition-colors duration-300 z-50"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={24} />
+        </button>
+      )}
+      <footer className="bg-obsidian text-white p-4 text-center">
+        <p>&copy; 2026 My Portfolio. All rights reserved.</p>
       </footer>
     </div>
   );
