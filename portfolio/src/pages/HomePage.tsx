@@ -97,7 +97,7 @@ const HomePage: React.FC = () => {
         viewport={{ once: true, amount: 0.1 }}
         className="py-16"
       >
-        <motion.h2 variants={itemVariants} className="text-4xl font-bold text-white text-center mb-12">About Me</motion.h2>
+        <motion.h2 variants={itemVariants} className="text-4xl font-bold text-white text-center mb-12">Me and My Achievements</motion.h2>
         <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-lg text-slate-300 leading-relaxed">
@@ -105,14 +105,11 @@ const HomePage: React.FC = () => {
             </p>
           </div>
           <div className="bg-white/5 p-8 rounded-lg shadow-lg">
-            <h3 className="text-2xl font-bold text-white mb-4">Tech Stack</h3>
+            <h3 className="text-2xl font-bold text-white mb-4">Awards</h3>
             <div className="flex flex-wrap gap-3">
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">React</span>
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">TypeScript</span>
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Node.js</span>
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Tailwind CSS</span>
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">PostgreSQL</span>
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">AWS</span>
+              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Top 4 at USTH Student Research 🌟</span>
+              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Top 20 best VinTech Challenge 🌟</span>
+              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Ongoing</span>
             </div>
           </div>
         </motion.div>
