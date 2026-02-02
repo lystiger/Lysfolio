@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XCircle } from 'lucide-react';
+import { createPortal } from 'react-dom';
 import useSound from 'use-sound';
 
 const FlipCard: React.FC = () => {
@@ -136,40 +137,43 @@ const FlipCard: React.FC = () => {
       </motion.div>
 
       {/* Easter Egg Overlay */}
-      <AnimatePresence>
-        {popupImg && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50"
-            onClick={() => setPopupImg(null)}
-          >
+      {createPortal(
+        <AnimatePresence>
+          {popupImg && (
             <motion.div
-              initial={{ scale: 0.5, rotate: -10 }}
-              animate={{ scale: 1, rotate: 0 }}
-              exit={{ scale: 0.5, opacity: 0 }}
-              className="relative max-w-sm w-full p-4"
-              onClick={(e) => e.stopPropagation()}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50"
+              onClick={() => setPopupImg(null)}
             >
-              <img
-                src={popupImg}
-                alt="Secret Unlocked"
-                className="rounded-xl border-2 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.2)]"
-              />
-              <button
-                onClick={() => setPopupImg(null)}
-                className="absolute top-2 right-2 text-white hover:text-red-500 transition-colors bg-black/50 rounded-full p-1"
+              <motion.div
+                initial={{ scale: 0.5, rotate: -10 }}
+                animate={{ scale: 1, rotate: 0 }}
+                exit={{ scale: 0.5, opacity: 0 }}
+                className="relative max-w-sm w-full p-4"
+                onClick={(e) => e.stopPropagation()}
               >
-                <XCircle size={24} />
-              </button>
-              <p className="text-center text-white font-mono mt-4 animate-pulse">
-                CRITICAL_ERROR: UNKNOWN_FILE_ACCESSED
-              </p>
+                <img
+                  src={popupImg}
+                  alt="Secret Unlocked"
+                  className="rounded-xl border-2 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.2)]"
+                />
+                <button
+                  onClick={() => setPopupImg(null)}
+                  className="absolute top-2 right-2 text-white hover:text-red-500 transition-colors bg-black/50 rounded-full p-1"
+                >
+                  <XCircle size={24} />
+                </button>
+                <p className="text-center text-white font-mono mt-4 animate-pulse">
+                  CRITICAL_ERROR: UNKNOWN_FILE_ACCESSED
+                </p>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 };
