@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import type { Project } from '../data/projects';
 import { Github } from 'lucide-react';
-import { motion } from 'framer-motion'; // Import motion
+import { motion } from 'framer-motion';
 
 interface ProjectCardProps {
   project: Project;
+  index: number; // Add index prop
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
@@ -17,6 +18,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
     const y = (e.clientY - top) / height;
     setMousePosition({ x, y });
   };
+
+  const placeholderColors = [
+    'bg-obsidian-light',
+    'bg-obsidian-dark',
+    'bg-obsidian-extra-light',
+    'bg-obsidian-extra-dark',
+  ];
+
+  const currentPlaceholderColor = placeholderColors[index % placeholderColors.length];
 
   return (
     <motion.div
@@ -44,8 +54,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
       )}
 
       {/* Image Placeholder */}
-      <div className="w-full h-48 bg-white/10 flex items-center justify-center text-slate-400 text-xl">
-        Project Image Placeholder
+      <div className={`w-full h-48 ${currentPlaceholderColor} flex items-center justify-center text-slate-400 text-xl`}>
       </div>
       <div className="p-6">
         <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>

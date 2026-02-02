@@ -7,20 +7,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        obsidian: '#0a0a0a', // Deep Obsidian
+        obsidian: {
+          DEFAULT: '#0a0a0a', // Deep Obsidian
+          light: '#1a1a1a',
+          dark: '#050505',
+          'extra-light': '#2a2a2a',
+          'extra-dark': '#000000',
+        },
         indigo: {
           neon: '#6366f1', // Neon Indigo
         },
-        charcoal: {
+        charcoal: { // Keep existing charcoal shades for potential use
           900: '#121212',
           800: '#1a1a1a',
           700: '#2a2a2a',
         },
-        electric: {
-          indigo: '#4F46E5', // Electric Indigo (from previous design, keep for now if needed)
+        electric: { // Keep existing electric indigo for potential use
+          indigo: '#4F46E5',
         },
-        lime: {
-          'cyber': '#CCFF00', // Cyber Lime (from previous design, keep for now if needed)
+        lime: { // Keep existing cyber lime for potential use
+          'cyber': '#CCFF00',
         },
         white: '#FFFFFF',
       },

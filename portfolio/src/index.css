@@ -31,5 +31,4 @@ body {
 
 .animate-marquee2 {
   animation: marquee2 25s linear infinite;
-  animation-delay: 12.5s; /* Start the second marquee halfway through */
 }
