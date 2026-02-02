@@ -22,6 +22,22 @@ const FlipCard: React.FC = () => {
     }, 3000);
   };
 
+  // Blur the entire page when popup is active
+  useEffect(() => {
+    if (popupImg) {
+      document.body.style.filter = 'blur(10px)';
+      document.body.style.overflow = 'hidden'; // Prevent scrolling
+    } else {
+      document.body.style.filter = '';
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.filter = '';
+      document.body.style.overflow = '';
+    };
+  }, [popupImg]);
+
   // Triggers for popups
   useEffect(() => {
     if (clicks === 15) {
@@ -31,7 +47,7 @@ const FlipCard: React.FC = () => {
       setPopupImg('/38thclick.png');
       playGlitch();
     } else if (clicks === 52) {
-      setPopupImg('/52ndclick.jpeg');
+      setPopupImg('/52ndclick.png');
       playGlitch();
     }
   }, [clicks, playGlitch]);
@@ -126,7 +142,7 @@ const FlipCard: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50"
             onClick={() => setPopupImg(null)}
           >
             <motion.div
