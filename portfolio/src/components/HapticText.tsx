@@ -71,7 +71,7 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
   };
 
   return (
-    <div className="relative inline-block h-10 overflow-hidden font-mono text-2xl font-bold w-[320px]"> {/* Fixed width for stable layout */}
+    <div className="relative inline-block h-10 overflow-hidden font-mono text-2xl font-bold w-[400px]"> {/* Fixed width for stable layout */}
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
