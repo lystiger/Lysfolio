@@ -6,6 +6,7 @@ export interface Project {
   link: string;
   githubLink?: string; // Optional GitHub link
   currentState: string;
+  image: string;
 }
 
 export const projects: Project[] = [
@@ -17,6 +18,7 @@ export const projects: Project[] = [
     link: 'https://github.com/lovelypoet/SilentVoix',
     githubLink: 'https://github.com/lovelypoet/SilentVoix',
     currentState: 'Ongoing',
+    image: '/SignGlove.png',
   },
   {
     id: 2,
@@ -26,6 +28,7 @@ export const projects: Project[] = [
     link: 'https://github.com/lystiger/TempCastML',
     githubLink: 'https://github.com/lystiger/TempCastML',
     currentState: 'Prototype',
+    image: '/TempCastML.png',
   },
   {
     id: 3,
@@ -35,6 +38,7 @@ export const projects: Project[] = [
     link: 'https://github.com/TommyDatLC/ReCNN',
     githubLink: 'https://github.com/TommyDatLC/ReCNN',
     currentState: 'Completed',
+    image: '/ReCNN.png',
   },
   {
     id: 4,
@@ -44,5 +48,6 @@ export const projects: Project[] = [
     link: 'https://github.com/lystiger/HASC',
     githubLink: 'https://github.com/lystiger/HASC',
     currentState: 'Ongoing',
+    image: '/HASC.png',
   },
 ];

@@ -93,8 +93,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         />
       )}
 
-      {/* Image Placeholder */}
-      <div className={`w-full h-48 ${currentPlaceholderColor} flex items-center justify-center text-slate-400 text-xl`}>
+      {/* Project Image */}
+      <div className={`w-full h-48 ${currentPlaceholderColor} overflow-hidden`}>
+        <img
+          src={project.image}
+          alt={`${project.title} preview`}
+          className="h-full w-full object-cover transition duration-300 blur-md group-hover:blur-0"
+          loading="lazy"
+        />
       </div>
       <div className="p-6">
         <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
