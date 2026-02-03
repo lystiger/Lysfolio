@@ -5,6 +5,7 @@ export interface Project {
   technologies: string[];
   link: string;
   githubLink?: string; // Optional GitHub link
+  currentState: string;
 }
 
 export const projects: Project[] = [
@@ -15,6 +16,7 @@ export const projects: Project[] = [
     technologies: ['React', 'MongoDB', 'FastAPI', 'Arduino IDE', 'TensorFlow'],
     link: 'https://github.com/lovelypoet/SilentVoix',
     githubLink: 'https://github.com/lovelypoet/SilentVoix',
+    currentState: 'Ongoing',
   },
   {
     id: 2,
@@ -23,6 +25,7 @@ export const projects: Project[] = [
     technologies: ['FastAPI', 'PySerial', 'TensorFlow', 'React'],
     link: 'https://github.com/lystiger/TempCastML',
     githubLink: 'https://github.com/lystiger/TempCastML',
+    currentState: 'Prototype',
   },
   {
     id: 3,
@@ -31,6 +34,7 @@ export const projects: Project[] = [
     technologies: ['C++', 'CUDA', 'CLion'],
     link: 'https://github.com/TommyDatLC/ReCNN',
     githubLink: 'https://github.com/TommyDatLC/ReCNN',
+    currentState: 'Completed',
   },
   {
     id: 4,
@@ -39,5 +43,6 @@ export const projects: Project[] = [
     technologies: ['Python', 'React', 'PostgreSQL', 'Gemini API'],
     link: 'https://github.com/lystiger/HASC',
     githubLink: 'https://github.com/lystiger/HASC',
+    currentState: 'Ongoing',
   },
 ];
