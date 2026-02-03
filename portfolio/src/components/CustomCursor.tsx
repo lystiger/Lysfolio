@@ -70,7 +70,7 @@ const CustomCursor: React.FC = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 rounded-full pointer-events-none z-[9999]"
+      className="custom-cursor fixed top-0 left-0 rounded-full pointer-events-none z-[9999]"
       variants={variants}
       animate={cursorVariant}
       transition={{ type: 'spring', stiffness: 500, damping: 30 }}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { projects } from '../data/projects';
@@ -48,9 +48,69 @@ const HomePage: React.FC = () => {
   };
 
   const skills = ['React', 'Pandas', 'Linux', 'Node.js', 'TensorFlow', 'MongoDB', 'PostgreSQL', 'C#', 'C++', 'Vue.js', 'Python', 'PyTorch'];
+  const [toastVisible, setToastVisible] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+
+  useEffect(() => {
+    if (!toastVisible) return;
+    const timer = window.setTimeout(() => setToastVisible(false), 2200);
+    return () => window.clearTimeout(timer);
+  }, [toastVisible]);
+
+  useEffect(() => {
+    if (isSending) {
+      document.body.classList.add('cursor-default');
+    } else {
+      document.body.classList.remove('cursor-default');
+    }
+  }, [isSending]);
+
+  const handleContactSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSending) return;
+    const formData = new FormData(event.currentTarget);
+    const name = String(formData.get('name') ?? '').trim();
+    const email = String(formData.get('email') ?? '').trim();
+    const message = String(formData.get('message') ?? '').trim();
+
+    const subject = encodeURIComponent(`Portfolio Contact from ${name || 'Visitor'}`);
+    const body = encodeURIComponent(
+      `Name: ${name || 'N/A'}\nEmail: ${email || 'N/A'}\n\n${message || ''}`
+    );
+
+    setToastVisible(true);
+    setIsSending(true);
+    window.setTimeout(() => {
+      window.location.href = `mailto:Dohunganh5002@gmail.com?subject=${subject}&body=${body}`;
+    }, 350);
+  };
 
   return (
     <div className="space-y-16 sm:space-y-20">
+      {toastVisible && (
+        <div
+          role="status"
+          aria-live="polite"
+          className="fixed top-6 right-6 z-[9999] rounded-xl border border-indigo-neon/40 bg-obsidian/90 px-4 py-3 text-sm text-white shadow-[0_10px_30px_rgba(0,0,0,0.35)] backdrop-blur-md"
+        >
+          Opening your email app...
+        </div>
+      )}
+      {isSending && (
+        <div className="fixed inset-0 z-[9998] flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="flex flex-col items-center gap-4 rounded-2xl border border-white/10 bg-obsidian/90 px-6 py-5 shadow-[0_15px_40px_rgba(0,0,0,0.45)]">
+            <div className="h-12 w-12 rounded-full border-2 border-indigo-neon/40 border-t-indigo-neon animate-spin" />
+            <p className="text-sm text-white/80 font-mono">Opening email app...</p>
+            <button
+              type="button"
+              onClick={() => setIsSending(false)}
+              className="mt-1 rounded-full border border-white/20 px-4 py-1.5 text-xs font-mono uppercase tracking-wider text-white/80 hover:text-white hover:border-white/40 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
       {/* Hero Section */}
       <motion.section
         id="hero"
@@ -174,7 +234,7 @@ const HomePage: React.FC = () => {
       >
         <motion.h2 variants={itemVariants} className="text-4xl font-bold text-white mb-8">Let's Connect</motion.h2>
         <motion.div variants={itemVariants} className="max-w-lg mx-auto mt-8">
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleContactSubmit}>
             <div className="relative">
               <input
                 type="text"
@@ -240,9 +300,10 @@ const HomePage: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="w-full sm:w-auto bg-indigo-neon text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300"
+              disabled={isSending}
+              className="w-full sm:w-auto bg-indigo-neon text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {isSending ? 'Sending...' : 'Send Message'}
             </button>
           </form>
         </motion.div>

@@ -7,6 +7,14 @@ body {
   cursor: none; /* Hide default cursor */
 }
 
+body.cursor-default {
+  cursor: auto;
+}
+
+body.cursor-default .custom-cursor {
+  display: none;
+}
+
 @media (hover: none) {
   body {
     cursor: auto;
