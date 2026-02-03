@@ -9,6 +9,10 @@ const FlipCard: React.FC = () => {
   const [clicks, setClicks] = useState(0);
   const [popupImg, setPopupImg] = useState<string | null>(null);
   const timerRef = useRef<number | null>(null);
+  const glowTimerRef = useRef<number | null>(null);
+  const [forceGlow, setForceGlow] = useState(false);
+  const [popupLocked, setPopupLocked] = useState(false);
+  const popupTimerRef = useRef<number | null>(null);
 
   // Sound Effect
   const [playGlitch] = useSound('/glitch.mp3', { volume: 0.5 });
@@ -23,59 +27,90 @@ const FlipCard: React.FC = () => {
     }, 3000);
   };
 
-  // Blur the entire page when popup is active
+  // Prevent scrolling when popup is active
   useEffect(() => {
     if (popupImg) {
-      document.body.style.filter = 'blur(10px)';
-      document.body.style.overflow = 'hidden'; // Prevent scrolling
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.filter = '';
       document.body.style.overflow = '';
     }
 
     return () => {
-      document.body.style.filter = '';
       document.body.style.overflow = '';
     };
   }, [popupImg]);
 
   // Triggers for popups
   useEffect(() => {
-    if (clicks === 15) {
+    if (clicks === 5) {
       setPopupImg('/15thclick.png');
       playGlitch();
-    } else if (clicks === 38) {
+      setForceGlow(true);
+      if (glowTimerRef.current) window.clearTimeout(glowTimerRef.current);
+      glowTimerRef.current = window.setTimeout(() => setForceGlow(false), 2000);
+      setPopupLocked(true);
+      if (popupTimerRef.current) window.clearTimeout(popupTimerRef.current);
+      popupTimerRef.current = window.setTimeout(() => setPopupLocked(false), 2000);
+    } else if (clicks === 12) {
       setPopupImg('/38thclick.png');
       playGlitch();
-    } else if (clicks === 52) {
+      setForceGlow(true);
+      if (glowTimerRef.current) window.clearTimeout(glowTimerRef.current);
+      glowTimerRef.current = window.setTimeout(() => setForceGlow(false), 2000);
+      setPopupLocked(true);
+      if (popupTimerRef.current) window.clearTimeout(popupTimerRef.current);
+      popupTimerRef.current = window.setTimeout(() => setPopupLocked(false), 2000);
+    } else if (clicks === 20) {
       setPopupImg('/52ndclick.png');
       playGlitch();
+      setForceGlow(true);
+      if (glowTimerRef.current) window.clearTimeout(glowTimerRef.current);
+      glowTimerRef.current = window.setTimeout(() => setForceGlow(false), 2000);
+      setPopupLocked(true);
+      if (popupTimerRef.current) window.clearTimeout(popupTimerRef.current);
+      popupTimerRef.current = window.setTimeout(() => setPopupLocked(false), 2000);
     }
   }, [clicks, playGlitch]);
+
+  useEffect(() => {
+    return () => {
+      if (glowTimerRef.current) {
+        window.clearTimeout(glowTimerRef.current);
+      }
+      if (popupTimerRef.current) {
+        window.clearTimeout(popupTimerRef.current);
+      }
+    };
+  }, []);
 
   // Color and shake calculations
   const getCardStyle = () => {
     let colorClass = 'text-white';
     let isShaking = false;
+    let isGlowing = false;
 
-    if (clicks >= 1 && clicks <= 15) {
+    if (clicks >= 1 && clicks <= 5) {
       if (clicks >= 1 && clicks <= 9) isShaking = true;
       if (clicks >= 6 && clicks <= 8) colorClass = 'text-yellow-500';
       if (clicks >= 9 && clicks <= 10) colorClass = 'text-red-500';
-    } else if (clicks > 15 && clicks <= 38) {
+    } else if (clicks > 5 && clicks <= 12) {
       if (clicks >= 27 && clicks <= 37) isShaking = true;
       if (clicks >= 28 && clicks <= 33) colorClass = 'text-yellow-500';
       if (clicks >= 34 && clicks <= 37) colorClass = 'text-red-500';
-    } else if (clicks > 38 && clicks <= 52) {
+    } else if (clicks > 12 && clicks <= 20) {
       if (clicks >= 41 && clicks <= 51) isShaking = true;
       if (clicks >= 44 && clicks <= 48) colorClass = 'text-yellow-500';
       if (clicks >= 49 && clicks <= 51) colorClass = 'text-red-500';
     }
 
-    return { colorClass, isShaking };
+    if ([3, 4, 10, 11, 18, 19].includes(clicks)) {
+      isGlowing = true;
+    }
+
+    return { colorClass, isShaking, isGlowing };
   };
 
-  const { colorClass, isShaking } = getCardStyle();
+  const { colorClass, isShaking, isGlowing } = getCardStyle();
 
   return (
     <div className="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-none sm:w-3/4 md:w-1/2 lg:w-1/2 h-80 sm:h-96 mx-auto" style={{ perspective: '1000px' }}>
@@ -125,7 +160,7 @@ const FlipCard: React.FC = () => {
         </motion.div>
 
         {/* Glow Border Effect */}
-        {isFlipped && (
+        {(isFlipped || isGlowing || forceGlow) && (
           <motion.div
             className="absolute inset-0 rounded-lg border border-indigo-neon/50"
             initial={{ opacity: 0 }}
@@ -144,8 +179,11 @@ const FlipCard: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50"
-              onClick={() => setPopupImg(null)}
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
+              onClick={() => {
+                if (popupLocked) return;
+                setPopupImg(null);
+              }}
             >
               <motion.div
                 initial={{ scale: 0.5, rotate: -10 }}
@@ -160,7 +198,10 @@ const FlipCard: React.FC = () => {
                   className="rounded-xl border-2 border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.2)]"
                 />
                 <button
-                  onClick={() => setPopupImg(null)}
+                  onClick={() => {
+                    if (popupLocked) return;
+                    setPopupImg(null);
+                  }}
                   className="absolute top-2 right-2 text-white hover:text-red-500 transition-colors bg-black/50 rounded-full p-1"
                 >
                   <XCircle size={24} />
