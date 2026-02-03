@@ -55,7 +55,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, starsEnabled, onToggl
         style={{ height, backdropFilter }}
         className="bg-obsidian/80 text-white p-4 shadow-lg sticky top-0 z-50 overflow-hidden transition-[height,backdrop-filter] duration-300"
       >
-        <nav className="container mx-auto flex justify-between items-center h-full">
+        <nav className="mx-auto flex w-full max-w-6xl items-center justify-between gap-6 px-4 sm:px-6 lg:px-8 h-full">
           <HapticText phrases={phrases} interval={4500} />
           <div className="flex items-center gap-3">
             <button
