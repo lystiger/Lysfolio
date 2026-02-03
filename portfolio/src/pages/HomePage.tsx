@@ -50,42 +50,46 @@ const HomePage: React.FC = () => {
   const skills = ['React', 'Pandas', 'Linux', 'Node.js', 'TensorFlow', 'MongoDB', 'PostgreSQL', 'C#', 'C++', 'Vue.js', 'Python', 'PyTorch'];
 
   return (
-    <div className="space-y-20">
+    <div className="space-y-16 sm:space-y-20">
       {/* Hero Section */}
       <motion.section
         id="hero"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="text-center py-20"
+        className="py-16 sm:py-20"
       >
-        <motion.h1 variants={itemVariants} className="text-5xl font-bold text-white mb-4">
-          Building the{' '}
-          <motion.span
-            variants={futureVariants}
-            transition={{
-              duration: 1.5,
-              ease: [0.42, 0, 0.58, 1],
-            }}
-            className="inline-block bg-gradient-to-r from-indigo-neon to-purple-500 text-transparent bg-clip-text"
-          >
-            Future
-          </motion.span>{' '}
-          of AI and Automation
-        </motion.h1>
-        <motion.p variants={itemVariants} className="text-xl text-slate-300 mb-8">
-          AI system developer focused on backend systems, automation, and practical ML.
-        </motion.p>
-        <motion.a
-          variants={itemVariants}
-          href="#projects"
-          className="bg-indigo-neon text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300"
-        >
-          View My Work
-        </motion.a>
-        <motion.div variants={itemVariants} className="mt-12 flex justify-center">
-          <FlipCard />
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="text-center lg:text-left">
+            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
+              Building the{' '}
+              <motion.span
+                variants={futureVariants}
+                transition={{
+                  duration: 1.5,
+                  ease: [0.42, 0, 0.58, 1],
+                }}
+                className="inline-block bg-gradient-to-r from-indigo-neon to-purple-500 text-transparent bg-clip-text"
+              >
+                Future
+              </motion.span>{' '}
+              of AI and Automation
+            </motion.h1>
+            <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-300 mb-8 max-w-xl mx-auto lg:mx-0">
+              AI system developer focused on backend systems, automation, and practical ML.
+            </motion.p>
+            <motion.a
+              variants={itemVariants}
+              href="#projects"
+              className="inline-flex bg-indigo-neon text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300"
+            >
+              View My Work
+            </motion.a>
+          </div>
+          <motion.div variants={itemVariants} className="flex justify-center lg:justify-end">
+            <FlipCard />
+          </motion.div>
+        </div>
       </motion.section>
 
       {/* About Me Section */}
@@ -100,7 +104,7 @@ const HomePage: React.FC = () => {
         <motion.h2 variants={itemVariants} className="text-4xl font-bold text-white text-center mb-12">About & Highlights</motion.h2>
         <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <p className="text-lg text-slate-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-prose mx-auto md:mx-0">
               I’m a self-driven computer science student who likes building things before being told how. I focus mainly on backend and system engineering—APIs, async systems, databases, testing, and architecture. I learn by breaking systems, fixing them, and rebuilding them cleaner. Outside of backend, I explore AI, computer vision, and automation, especially projects that combine multiple domains into something practical.
             </p>
           </div>
@@ -117,12 +121,12 @@ const HomePage: React.FC = () => {
         <motion.div variants={itemVariants} className="relative flex overflow-x-hidden mt-16">
           <div className="py-12 animate-marquee whitespace-nowrap">
             {skills.map((skill, index) => (
-              <span key={index} className="text-4xl mx-8 text-white/20 font-bold uppercase">
+              <span key={index} className="text-2xl sm:text-4xl mx-6 sm:mx-8 text-white/20 font-bold uppercase">
                 {skill}
               </span>
             ))}
             {skills.map((skill, index) => ( // Duplicate content for seamless loop
-              <span key={`duplicate-${index}`} className="text-4xl mx-8 text-white/20 font-bold uppercase">
+              <span key={`duplicate-${index}`} className="text-2xl sm:text-4xl mx-6 sm:mx-8 text-white/20 font-bold uppercase">
                 {skill}
               </span>
             ))}
@@ -226,7 +230,7 @@ const HomePage: React.FC = () => {
             </div>
             <button
               type="submit"
-              className="bg-indigo-neon text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300"
+              className="w-full sm:w-auto bg-indigo-neon text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300"
             >
               Send Message
             </button>

@@ -61,7 +61,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
           </ul>
         </nav>
       </motion.header>
-      <main className="flex-grow container mx-auto p-4">
+      <main className="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {children}
       </main>
       {showBackToTop && (

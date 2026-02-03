@@ -13,6 +13,13 @@ body {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee2 {
+    animation: none;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);

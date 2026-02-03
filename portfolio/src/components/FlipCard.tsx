@@ -78,7 +78,7 @@ const FlipCard: React.FC = () => {
   const { colorClass, isShaking } = getCardStyle();
 
   return (
-    <div className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-64 mx-auto" style={{ perspective: '1000px' }}>
+    <div className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-80 sm:h-96 mx-auto" style={{ perspective: '1000px' }}>
       <motion.div
         className="relative w-full h-full cursor-pointer"
         style={{ transformStyle: 'preserve-3d' }}
@@ -99,8 +99,8 @@ const FlipCard: React.FC = () => {
           className={`absolute inset-0 w-full h-full backface-hidden rounded-lg bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-2xl p-6 flex flex-col justify-center items-center ${colorClass}`}
           style={{ backfaceVisibility: 'hidden' }}
         >
-          <h3 className="text-2xl font-bold mb-4">Quick Facts</h3>
-          <div className="text-center space-y-2">
+          <h3 className="text-xl sm:text-2xl font-bold mb-3">Quick Facts</h3>
+          <div className="text-center space-y-1 text-sm sm:text-base">
             <p><strong>Name:</strong> Hung Anh Do</p>
             <p><strong>Age:</strong> 21</p>
             <p><strong>Phone:</strong> +98 (925)58 619</p>
@@ -117,8 +117,8 @@ const FlipCard: React.FC = () => {
             transform: 'rotateY(180deg)',
           }}
         >
-          <h3 className="text-2xl font-bold mb-4">Personal Side</h3>
-          <div className="text-center space-y-2">
+          <h3 className="text-xl sm:text-2xl font-bold mb-3">Personal Side</h3>
+          <div className="text-center space-y-1 text-sm sm:text-base">
             <p><strong>Relation Status:</strong> In luv</p>
             <p><strong>Hobbies:</strong> Coding, AI Research, Gaming</p>
           </div>
