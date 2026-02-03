@@ -85,7 +85,7 @@ const HomePage: React.FC = () => {
             <motion.a
               variants={itemVariants}
               href="#projects"
-              className="inline-flex bg-indigo-neon text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300"
+              className="inline-flex bg-indigo-neon text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-semibold hover:bg-indigo-600 transition-colors duration-300"
             >
               View My Work
             </motion.a>
@@ -95,6 +95,8 @@ const HomePage: React.FC = () => {
           </motion.div>
         </div>
       </motion.section>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-indigo-neon/40 to-transparent" />
 
       {/* About Me Section */}
       <motion.section
@@ -138,6 +140,8 @@ const HomePage: React.FC = () => {
         </motion.div>
       </motion.section>
 
+      <div className="h-px bg-gradient-to-r from-transparent via-indigo-neon/40 to-transparent" />
+
       {/* Project Gallery Section - Bento Grid */}
       <motion.section
         id="projects"
@@ -156,6 +160,8 @@ const HomePage: React.FC = () => {
           ))}
         </motion.div>
       </motion.section>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-indigo-neon/40 to-transparent" />
 
       {/* Contact Section */}
       <motion.section

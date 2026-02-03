@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { ArrowUp, Menu, X } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion'; // Import Framer Motion
 import HapticText from '../components/HapticText';
 
@@ -9,6 +9,7 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { scrollY } = useScroll();
   const height = useTransform(scrollY, [0, 100], [80, 60]); // Shrink from 80px to 60px
@@ -50,17 +51,38 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     <div className="min-h-screen flex flex-col">
       <motion.header
         style={{ height, backdropFilter }}
-        className="bg-obsidian/80 text-white p-4 shadow-lg sticky top-0 z-50 overflow-hidden"
+        className="bg-obsidian/80 text-white p-4 shadow-lg sticky top-0 z-50 overflow-hidden transition-[height,backdrop-filter] duration-300"
       >
         <nav className="container mx-auto flex justify-between items-center h-full">
           <HapticText phrases={phrases} interval={4500} />
-          <ul className="flex space-x-4">
+          <ul className="hidden md:flex space-x-6">
             <li><a href="#hero" className="hover:text-indigo-neon transition-colors duration-300">Home</a></li>
             <li><a href="#about" className="hover:text-indigo-neon transition-colors duration-300">About</a></li>
             <li><a href="#projects" className="hover:text-indigo-neon transition-colors duration-300">Projects</a></li>
             <li><a href="#contact" className="hover:text-indigo-neon transition-colors duration-300">Contact</a></li>
           </ul>
+          <button
+            type="button"
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+            aria-label="Toggle navigation"
+            aria-expanded={isMenuOpen}
+          >
+            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
         </nav>
+        {isMenuOpen && (
+          <div className="md:hidden px-4 pb-4">
+            <div className="mt-3 rounded-xl bg-obsidian-light/80 border border-white/10 backdrop-blur-lg">
+              <ul className="flex flex-col py-2">
+                <li><a href="#hero" className="block px-4 py-3 hover:text-indigo-neon transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Home</a></li>
+                <li><a href="#about" className="block px-4 py-3 hover:text-indigo-neon transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>About</a></li>
+                <li><a href="#projects" className="block px-4 py-3 hover:text-indigo-neon transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
+                <li><a href="#contact" className="block px-4 py-3 hover:text-indigo-neon transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        )}
       </motion.header>
       <main className="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {children}
