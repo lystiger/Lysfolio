@@ -78,7 +78,7 @@ const FlipCard: React.FC = () => {
   const { colorClass, isShaking } = getCardStyle();
 
   return (
-    <div className="w-[35%] h-64 mx-auto" style={{ perspective: '1000px' }}>
+    <div className="w-full sm:w-2/3 md:w-1/2 lg:w-1/3 h-64 mx-auto" style={{ perspective: '1000px' }}>
       <motion.div
         className="relative w-full h-full cursor-pointer"
         style={{ transformStyle: 'preserve-3d' }}
@@ -111,7 +111,7 @@ const FlipCard: React.FC = () => {
 
         {/* Back Side */}
         <motion.div
-          className="absolute inset-0 w-full h-full backface-hidden rounded-lg bg-bg-white/5 backdrop-blur-2xl text-white shadow-2xl p-6 flex flex-col justify-center items-center"
+          className="absolute inset-0 w-full h-full backface-hidden rounded-lg bg-white/5 backdrop-blur-2xl text-white shadow-2xl p-6 flex flex-col justify-center items-center"
           style={{
             backfaceVisibility: 'hidden',
             transform: 'rotateY(180deg)',

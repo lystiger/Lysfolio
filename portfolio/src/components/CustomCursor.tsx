@@ -4,8 +4,16 @@ import { motion } from 'framer-motion';
 const CustomCursor: React.FC = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [cursorVariant, setCursorVariant] = useState('default');
+  const [isEnabled, setIsEnabled] = useState(true);
 
   useEffect(() => {
+    const canHover = window.matchMedia('(hover: hover)').matches;
+    setIsEnabled(canHover);
+  }, []);
+
+  useEffect(() => {
+    if (!isEnabled) return;
+
     const mouseMove = (e: MouseEvent) => {
       setMousePosition({
         x: e.clientX,
@@ -18,7 +26,7 @@ const CustomCursor: React.FC = () => {
     return () => {
       window.removeEventListener('mousemove', mouseMove);
     };
-  }, []);
+  }, [isEnabled]);
 
   const variants = {
     default: {
@@ -43,6 +51,8 @@ const CustomCursor: React.FC = () => {
 
   // Attach event listeners to all interactive elements
   useEffect(() => {
+    if (!isEnabled) return;
+
     document.querySelectorAll('a, button, input, textarea, .group').forEach((el) => {
       el.addEventListener('mouseenter', textEnter);
       el.addEventListener('mouseleave', textLeave);
@@ -54,7 +64,9 @@ const CustomCursor: React.FC = () => {
         el.removeEventListener('mouseleave', textLeave);
       });
     };
-  }, []);
+  }, [isEnabled]);
+
+  if (!isEnabled) return null;
 
   return (
     <motion.div

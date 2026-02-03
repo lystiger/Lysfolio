@@ -47,7 +47,7 @@ const HomePage: React.FC = () => {
     }
   };
 
-  const skills = ['React', 'Panda', 'Linux', 'Node.js', 'TensorFlow', 'MongoDB', 'PostgreSQL', 'C#', 'C++', 'Vue.js', 'Python', 'PyTorch'];
+  const skills = ['React', 'Pandas', 'Linux', 'Node.js', 'TensorFlow', 'MongoDB', 'PostgreSQL', 'C#', 'C++', 'Vue.js', 'Python', 'PyTorch'];
 
   return (
     <div className="space-y-20">
@@ -74,7 +74,7 @@ const HomePage: React.FC = () => {
           of AI and Automation
         </motion.h1>
         <motion.p variants={itemVariants} className="text-xl text-slate-300 mb-8">
-          AI System Developer focused on high-performance interfaces.
+          AI system developer focused on backend systems, automation, and practical ML.
         </motion.p>
         <motion.a
           variants={itemVariants}
@@ -97,7 +97,7 @@ const HomePage: React.FC = () => {
         viewport={{ once: true, amount: 0.1 }}
         className="py-16"
       >
-        <motion.h2 variants={itemVariants} className="text-4xl font-bold text-white text-center mb-12">Me and My Achievements</motion.h2>
+        <motion.h2 variants={itemVariants} className="text-4xl font-bold text-white text-center mb-12">About & Highlights</motion.h2>
         <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-lg text-slate-300 leading-relaxed">
@@ -108,8 +108,8 @@ const HomePage: React.FC = () => {
             <h3 className="text-2xl font-bold text-white mb-4">Awards</h3>
             <div className="flex flex-wrap gap-3">
               <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Top 4 at USTH Student Research 🌟</span>
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Top 20 best VinTech Challenge 🌟</span>
-              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Ongoing</span>
+              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Top 20 in VinTech Challenge 🌟</span>
+              <span className="bg-white/10 text-indigo-neon px-4 py-2 rounded-full text-sm font-mono">Open to new challenges</span>
             </div>
           </div>
         </motion.div>

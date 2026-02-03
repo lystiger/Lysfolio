@@ -32,6 +32,21 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
     <motion.div
       whileHover={{ y: -10 }}
       whileTap={{ scale: 0.98 }}
+      onClick={() => {
+        if (project.link) {
+          window.open(project.link, '_blank', 'noopener,noreferrer');
+        }
+      }}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          if (project.link) {
+            window.open(project.link, '_blank', 'noopener,noreferrer');
+          }
+        }
+      }}
+      role="link"
+      tabIndex={0}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}

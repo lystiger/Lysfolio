@@ -7,6 +7,12 @@ body {
   cursor: none; /* Hide default cursor */
 }
 
+@media (hover: none) {
+  body {
+    cursor: auto;
+  }
+}
+
 @keyframes marquee {
   0% {
     transform: translateX(0%);
