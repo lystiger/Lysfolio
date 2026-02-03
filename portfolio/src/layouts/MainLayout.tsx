@@ -5,9 +5,11 @@ import HapticText from '../components/HapticText';
 
 interface MainLayoutProps {
   children: React.ReactNode;
+  starsEnabled: boolean;
+  onToggleStars: () => void;
 }
 
-const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
+const MainLayout: React.FC<MainLayoutProps> = ({ children, starsEnabled, onToggleStars }) => {
   const [showBackToTop, setShowBackToTop] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -55,26 +57,47 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
       >
         <nav className="container mx-auto flex justify-between items-center h-full">
           <HapticText phrases={phrases} interval={4500} />
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              className="hidden md:inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider px-3 py-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-colors"
+              onClick={onToggleStars}
+              aria-pressed={starsEnabled}
+            >
+              <span className={`h-2 w-2 rounded-full ${starsEnabled ? 'bg-emerald-400' : 'bg-slate-400'}`} />
+              Stars {starsEnabled ? 'On' : 'Off'}
+            </button>
+            <button
+              type="button"
+              className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              aria-label="Toggle navigation"
+              aria-expanded={isMenuOpen}
+            >
+              {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+            </button>
+          </div>
           <ul className="hidden md:flex space-x-6">
             <li><a href="#hero" className="hover:text-indigo-neon transition-colors duration-300">Home</a></li>
             <li><a href="#about" className="hover:text-indigo-neon transition-colors duration-300">About</a></li>
             <li><a href="#projects" className="hover:text-indigo-neon transition-colors duration-300">Projects</a></li>
             <li><a href="#contact" className="hover:text-indigo-neon transition-colors duration-300">Contact</a></li>
           </ul>
-          <button
-            type="button"
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-            aria-label="Toggle navigation"
-            aria-expanded={isMenuOpen}
-          >
-            {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
         </nav>
         {isMenuOpen && (
           <div className="md:hidden px-4 pb-4">
             <div className="mt-3 rounded-xl bg-obsidian-light/80 border border-white/10 backdrop-blur-lg">
               <ul className="flex flex-col py-2">
+                <li>
+                  <button
+                    type="button"
+                    className="w-full text-left px-4 py-3 hover:text-indigo-neon transition-colors duration-300"
+                    onClick={onToggleStars}
+                    aria-pressed={starsEnabled}
+                  >
+                    Stars: {starsEnabled ? 'On' : 'Off'}
+                  </button>
+                </li>
                 <li><a href="#hero" className="block px-4 py-3 hover:text-indigo-neon transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Home</a></li>
                 <li><a href="#about" className="block px-4 py-3 hover:text-indigo-neon transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>About</a></li>
                 <li><a href="#projects" className="block px-4 py-3 hover:text-indigo-neon transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
