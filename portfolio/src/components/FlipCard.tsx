@@ -154,7 +154,7 @@ const FlipCard: React.FC = () => {
         >
           <h3 className="text-xl sm:text-2xl font-bold mb-3">Personal Side</h3>
           <div className="text-center space-y-1 text-sm sm:text-base">
-            <p><strong>Relation Status:</strong> In luv</p>
+            <p><strong>Relationship:</strong> Private</p>
             <p><strong>Hobbies:</strong> Coding, AI Research, Gaming</p>
           </div>
         </motion.div>

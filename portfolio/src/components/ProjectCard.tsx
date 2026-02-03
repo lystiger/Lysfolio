@@ -98,7 +98,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
         <img
           src={project.image}
           alt={`${project.title} preview`}
-          className="h-full w-full object-cover transition duration-300 blur-md group-hover:blur-0 group-hover:contrast-110 group-hover:saturate-110 group-hover:scale-[1.02]"
+          className="h-full w-full object-cover transition duration-300 blur-md group-hover:blur-0 group-hover:contrast-110 group-hover:saturate-110 group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:transform-none motion-reduce:filter-none"
           loading="lazy"
         />
       </div>

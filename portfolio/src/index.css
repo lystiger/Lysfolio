@@ -15,6 +15,14 @@ body.cursor-default .custom-cursor {
   display: none;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(99, 102, 241, 0.8);
+  outline-offset: 3px;
+}
+
 @media (hover: none) {
   body {
     cursor: auto;

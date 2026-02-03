@@ -140,6 +140,12 @@ const HomePage: React.FC = () => {
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div className="text-center lg:text-left">
+            <motion.div
+              variants={itemVariants}
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs font-mono uppercase tracking-wider text-white/70 mb-4"
+            >
+              AI Systems • Backend • Automation
+            </motion.div>
             <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-4">
               Building the{' '}
               <motion.span

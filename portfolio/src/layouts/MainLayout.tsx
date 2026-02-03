@@ -19,7 +19,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children, starsEnabled, onToggl
   const backdropFilter = useTransform(blurValue, (latest) => `blur(${latest}px)`);
 
   const phrases = [
-    { text: 'Hello, Im Lystiger', color: '#93c5fd' }, // Soft blue
+    { text: "Hello, I'm Lystiger", color: '#93c5fd' }, // Soft blue
     { text: 'こんにちは、Lystigerです', color: '#c4b5fd' }, // Soft purple
     { text: 'Bonjour, je suis Lystiger', color: '#e5e7eb' }, // Soft white/gray
     { text: 'Hola, soy Lystiger', color: '#86efac' }, // Soft green

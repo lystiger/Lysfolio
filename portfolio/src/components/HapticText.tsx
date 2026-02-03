@@ -53,7 +53,7 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
   };
 
   return (
-    <div className="relative inline-block h-9 sm:h-10 overflow-hidden font-mono text-base sm:text-lg font-semibold w-[260px] sm:w-[320px] md:w-[380px]"> {/* Responsive width for stable layout */}
+    <div className="relative inline-block h-9 sm:h-10 overflow-hidden font-mono text-base sm:text-lg font-semibold w-[260px] sm:w-[320px] md:w-[380px] text-left"> {/* Responsive width for stable layout */}
       <AnimatePresence mode="wait">
         <motion.span
           key={index}
@@ -70,7 +70,7 @@ const HapticText: React.FC<HapticTextProps> = ({ phrases, interval = 3000 }) => 
             restDelta: 0.001,
             restSpeed: 0.001,
           }}
-          className="absolute whitespace-nowrap text-center w-full"
+          className="absolute whitespace-nowrap text-left w-full"
           style={{ color: currentPhrase.color }}
         >
           {currentPhrase.text}
