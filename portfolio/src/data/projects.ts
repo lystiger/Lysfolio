@@ -10,8 +10,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1,
-    title: 'Sign Glove: A Smart Glove Bridging Gesture and Speech',
-    description: 'This is a description of my first project. It is a web application that does amazing things.',
+    title: 'Sign Gloves - SilentVoix',
+    description: 'Gestures and Speech Connect Smart Gloves.',
     technologies: ['React', 'MongoDB', 'FastAPI', 'Arduino IDE', 'TensorFlow'],
     link: 'https://github.com/lovelypoet/SilentVoix',
     githubLink: 'https://github.com/lovelypoet/SilentVoix',
