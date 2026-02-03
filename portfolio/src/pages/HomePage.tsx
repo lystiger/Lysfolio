@@ -47,7 +47,26 @@ const HomePage: React.FC = () => {
     }
   };
 
-  const skills = ['React', 'Pandas', 'Linux', 'Node.js', 'TensorFlow', 'MongoDB', 'PostgreSQL', 'C#', 'C++', 'Vue.js', 'Python', 'PyTorch'];
+  const techIcons = [
+    { label: 'React', src: '/react-svgrepo-com.svg' },
+    { label: 'Vue', src: '/vue.svg' },
+    { label: 'Node.js', src: '/nodejs-svgrepo-com.svg' },
+    { label: 'MongoDB', src: '/mongodb-svgrepo-com.svg' },
+    { label: 'FastAPI', src: '/fastapi-svgrepo-com.svg' },
+    { label: 'Python', src: '/python.svg' },
+    { label: 'PyTorch', src: '/pytorch-svgrepo-com.svg' },
+    { label: 'TensorFlow', src: '/tensorflow-svgrepo-com.svg' },
+    { label: 'Docker', src: '/docker-16-svgrepo-com.svg' },
+    { label: 'Kubernetes', src: '/kubernetes-16-svgrepo-com.svg' },
+    { label: 'Java', src: '/java-16-svgrepo-com.svg' },
+    { label: 'JavaScript', src: '/js02-svgrepo-com.svg' },
+    { label: 'CLion', src: '/clion-svgrepo-com.svg' },
+    { label: 'VS Code', src: '/vscode-16-svgrepo-com.svg' },
+    { label: 'Android Studio', src: '/logo-google-android-studio-svgrepo-com.svg' },
+    { label: 'Figma', src: '/figma-svgrepo-com.svg' },
+    { label: 'Unity', src: '/unity-small-svgrepo-com.svg' },
+    { label: 'Lightroom', src: '/adobelightroom-svgrepo-com.svg' },
+  ];
   const [toastVisible, setToastVisible] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
@@ -184,18 +203,32 @@ const HomePage: React.FC = () => {
           </div>
         </motion.div>
         {/* Skills Marquee */}
-        <motion.div variants={itemVariants} className="relative flex overflow-x-hidden mt-16">
-          <div className="py-12 animate-marquee whitespace-nowrap">
-            {skills.map((skill, index) => (
-              <span key={index} className="text-2xl sm:text-4xl mx-6 sm:mx-8 text-white/20 font-bold uppercase">
-                {skill}
-              </span>
-            ))}
-            {skills.map((skill, index) => ( // Duplicate content for seamless loop
-              <span key={`duplicate-${index}`} className="text-2xl sm:text-4xl mx-6 sm:mx-8 text-white/20 font-bold uppercase">
-                {skill}
-              </span>
-            ))}
+        <motion.div variants={itemVariants} className="relative mt-16">
+          <div className="marquee py-10">
+            <div className="marquee__track">
+              {techIcons.map((icon, index) => (
+                <span key={index} className="inline-flex items-center justify-center mx-8 sm:mx-12">
+                  <img
+                    src={icon.src}
+                    alt={icon.label}
+                    title={icon.label}
+                    className="h-11 w-11 sm:h-16 sm:w-16 opacity-70 grayscale filter brightness-110 transition duration-300 hover:opacity-90"
+                    loading="lazy"
+                  />
+                </span>
+              ))}
+              {techIcons.map((icon, index) => (
+                <span key={`duplicate-${index}`} className="inline-flex items-center justify-center mx-8 sm:mx-12">
+                  <img
+                    src={icon.src}
+                    alt={icon.label}
+                    title={icon.label}
+                    className="h-11 w-11 sm:h-16 sm:w-16 opacity-70 grayscale filter brightness-110 transition duration-300 hover:opacity-90"
+                    loading="lazy"
+                  />
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
       </motion.section>
