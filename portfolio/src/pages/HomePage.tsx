@@ -70,6 +70,10 @@ const HomePage: React.FC = () => {
                   ease: [0.42, 0, 0.58, 1],
                 }}
                 className="inline-block bg-gradient-to-r from-indigo-neon to-purple-500 text-transparent bg-clip-text"
+                style={{
+                  textShadow:
+                    '0 4px 12px rgba(99, 102, 241, 0.45), 0 10px 30px rgba(99, 102, 241, 0.35)',
+                }}
               >
                 Future
               </motion.span>{' '}

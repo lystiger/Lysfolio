@@ -16,11 +16,12 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   const backdropFilter = useTransform(blurValue, (latest) => `blur(${latest}px)`);
 
   const phrases = [
-    { text: 'Hello, I am Lystiger', color: '#3b82f6' }, // Blue for English
-    { text: 'こんにちは、Lystigerです', color: '#ef4444' }, // Red for Japanese
-    { text: 'Bonjour, je suis Lystiger', color: '#ffffff' }, // White for French
-    { text: 'Hola, soy Lystiger', color: '#10b981' }, // Green for Spanish
-    { text: 'Hallo, ich bin Lystiger', color: '#f59e0b' }, // Yellow for German
+    { text: 'Hello, Im Lystiger', color: '#93c5fd' }, // Soft blue
+    { text: 'こんにちは、Lystigerです', color: '#c4b5fd' }, // Soft purple
+    { text: 'Bonjour, je suis Lystiger', color: '#e5e7eb' }, // Soft white/gray
+    { text: 'Hola, soy Lystiger', color: '#86efac' }, // Soft green
+    { text: 'Hallo, ich bin Lystiger', color: '#fde68a' }, // Soft yellow
+    { text: 'Xin Chao, To la Lystiger', color: '#fca5a5' }, // Soft red
   ];
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
         className="bg-obsidian/80 text-white p-4 shadow-lg sticky top-0 z-50 overflow-hidden"
       >
         <nav className="container mx-auto flex justify-between items-center h-full">
-          <HapticText phrases={phrases} interval={3000} />
+          <HapticText phrases={phrases} interval={4500} />
           <ul className="flex space-x-4">
             <li><a href="#hero" className="hover:text-indigo-neon transition-colors duration-300">Home</a></li>
             <li><a href="#about" className="hover:text-indigo-neon transition-colors duration-300">About</a></li>
